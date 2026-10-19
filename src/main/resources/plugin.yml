@@ -1,0 +1,14 @@
+name: WhitelistBypass
+version: "1.0.0"
+main: dev.example.whitelistbypass.WhitelistBypassPlugin
+api-version: "26.1"
+description: Allows players with whitelist.bypass to join when the server is full.
+author: Example
+
+softdepend:
+  - Vault
+
+permissions:
+  whitelist.bypass:
+    description: Allows joining when the server has reached its player limit.
+    default: false
