@@ -58,6 +58,15 @@ public final class WhitelistBypassPlugin extends JavaPlugin
             return;
         }
 
+        if (event.isOp()) {
+            getLogger().info(
+                    profile.getName() + " is an operator; "
+                    + "whitelist bypass granted."
+            );
+            event.setWhitelisted(true);
+            return;
+        }
+
         if (vaultPermission == null) {
             getLogger().warning(
                     "No Vault permission provider; "
