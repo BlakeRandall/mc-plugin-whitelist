@@ -15,6 +15,9 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("net.milkbowl.vault:VaultUnlockedAPI:2.16")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.12.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 java {
@@ -28,4 +31,8 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.jar {
     archiveBaseName.set("WhitelistBypass")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

@@ -63,7 +63,9 @@ public final class WhitelistBypassPlugin extends JavaPlugin
                     profile.getName() + " is an operator; "
                     + "whitelist bypass granted."
             );
-            event.setWhitelisted(true);
+            event.setWhitelisted(WhitelistBypassPolicy.shouldGrant(
+                    false, true, false
+            ));
             return;
         }
 
@@ -93,7 +95,9 @@ public final class WhitelistBypassPlugin extends JavaPlugin
                     + BYPASS_PERMISSION + " = " + hasPermission
             );
 
-            if (hasPermission) {
+            if (WhitelistBypassPolicy.shouldGrant(
+                    false, false, hasPermission
+            )) {
                 event.setWhitelisted(true);
                 getLogger().info(
                         "Whitelist bypass granted for " + profile.getName()
