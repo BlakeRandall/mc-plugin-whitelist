@@ -82,7 +82,12 @@ jobs:
         run: gradle wrapper
 
       - name: Build JAR
-        run: ./gradlew --no-daemon clean jar
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            ./gradlew --no-daemon clean jar -PreleaseVersion="${GITHUB_REF_NAME#v}"
+          else
+            ./gradlew --no-daemon clean jar
+          fi
 
       - name: Package JAR
         id: package

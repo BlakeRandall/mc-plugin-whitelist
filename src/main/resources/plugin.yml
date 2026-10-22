@@ -1,5 +1,5 @@
 name: WhitelistBypass
-version: "1.0.0"
+version: "${version}"
 main: dev.example.whitelistbypass.WhitelistBypassPlugin
 api-version: "26.1"
 description: Allows players with whitelist.bypass to join when the server is full.

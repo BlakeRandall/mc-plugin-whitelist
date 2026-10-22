@@ -4,7 +4,9 @@ plugins {
 }
 
 group = "dev.example"
-version = "1.0.0"
+version = providers.gradleProperty("releaseVersion")
+    .orElse("1.0.0-SNAPSHOT")
+    .get()
 
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
@@ -22,6 +24,13 @@ dependencies {
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(25))
+}
+
+tasks.processResources {
+    inputs.property("version", project.version)
+    filesMatching("plugin.yml") {
+        expand(mapOf("version" to project.version))
+    }
 }
 
 tasks.withType<JavaCompile>().configureEach {
