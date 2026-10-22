@@ -109,7 +109,7 @@ jobs:
           fi
 
           VERSION="${REF_NAME//\//-}"
-          JAR_NAME="app-${VERSION}.jar"
+          JAR_NAME="WhitelistBypass-${VERSION}.jar"
 
           cp "${jars[0]}" "dist/${JAR_NAME}"
 
